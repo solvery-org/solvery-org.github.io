@@ -10,7 +10,7 @@ function switchSideMenuVisibility() {
 }
 
 function addSideMenuButtonListener() {
-    var buttonList = document.getElementsByClassName("snVisSwitch");
+    var buttonList = document.getElementsByClassName("sideNavVisibilitySwitch");
     for (var button of buttonList) {
         button.addEventListener("click", switchSideMenuVisibility);
     }
