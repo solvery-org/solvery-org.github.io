@@ -1,21 +1,20 @@
-function switchSideMenuVisibility() {
-    var classList = document.getElementById("side-nav").classList;
-    var mainDiv = document.getElementById("main");
-    if (classList.toggle("sn-closed")) {
-        mainDiv.style.marginLeft = "0";
+function toggleTopMenu() {
+    var navLinkSpan = document.getElementById("navLinks");
+    var navLinkNumber = navLinkSpan.querySelectorAll("a").length;
+    var navDiv = document.getElementById("nav");
+    var classList = navLinkSpan.classList;
+    var menuHeight = navLinkNumber * 40 + 65;
+    if (classList.toggle("navLinksTop")) {
+        navDiv.style.height = "6vh";
     } else {
-        mainDiv.style.marginLeft = "30vw";
+        navDiv.style.height = menuHeight + "px";
     }
-    classList.toggle("sn-open");
+    classList.toggle("navLinksBelow");
 }
 
-function addSideMenuButtonListener() {
-    var buttonList = document.getElementsByClassName("sideNavVisibilitySwitch");
-    for (var button of buttonList) {
-        button.addEventListener("click", switchSideMenuVisibility);
-    }
+function addMenuButtonListener() {
+    var button = document.getElementById("navMenuButton");
+    button.addEventListener("click", toggleTopMenu);
 }
 
-addSideMenuButtonListener();
-
-
+addMenuButtonListener();

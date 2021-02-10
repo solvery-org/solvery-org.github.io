@@ -8,30 +8,59 @@
     <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
 <body>
-   <nav class="navbar">
-       <span class="open-side">
-           <a href="#" class="sideNavVisibilitySwitch">
-               <!--svg-image of horizontal menu-bars-->
-               <svg width="30" height="30">
-                   <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
-                   <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
-                   <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
-               </svg>
-           </a>
-       </span>
-       <ul class="navbar-nav">
-           <li><a href="#">Home</a></li>
-           <li><a href="#">About</a></li>
-       </ul>
-   </nav> 
-   <div id="side-nav" class="sn-closed">
-       <a href="#" class="sideNavVisibilitySwitch">&times;</a>
-       <a href="#">Home</a>
-        <a href="#">About</a>
-   </div>
-   <div id="main">
-        <h1>Website-Inhalt</h1>
-   </div>
+    <!--Navigation bar at screen top-->
+    <nav id="nav">
+        <span id="navLinks" class="navLinksTop">
+            <!--Links to be reached via the top navigation menu-->
+            <span><a href="#">Home</a></span>
+            <span><a href="#">About</a></span>
+        </span> 
+        <!--container for menu switch; only visible if screen is too small--> 
+        <button id="navMenuButton" class="navVisibilitySwitch">
+            <span class="iconBar"></span>
+            <span class="iconBar"></span>
+            <span class="iconBar"></span>
+        </button>
+    </nav> 
+    <div id="main">
+        <span class="textWithHorizontalLine"> <span>Which topic are you here for?</span> </span>
+        <form type="text" id="topicSearch"> 
+            <input placeholder="Search">
+            <button></button>
+        </form>
+        <div id="mainContainer">
+            <div id="contacts" class="mainContainerWrapper">
+                <span class="sectionIntro">Talent Pool</span>
+                <h2 class="sectionTitle">Get into contact</h2>
+                <div id="contactContainer">
+                    <div class="contact" id="activists">
+                        <svg viewBox="0 0 25 25"><use xlink:href="images/activists.svg#symbol"></use></svg>
+                        <a href="#" >Activists<span></span></a>
+                    </div>
+                    <div class="contact" id="journalists">
+                        <svg viewBox="0 0 25 25"><use xlink:href="images/journalists.svg#symbol"></use></svg>
+                        <a href="#" >Journalists<span></span></a>
+                    </div>
+                    <div class="contact" id="policyMakers">
+                        <svg viewBox="0 0 25 25"><use xlink:href="images/policyMakers.svg#symbol"></use></svg>
+                        <a href="#" >Policy makers<span></span></a>
+                    </div>
+                    <div class="contact" id="scientists">
+                        <svg viewBox="0 0 25 25"><use xlink:href="images/scientists.svg#symbol"></use></svg>
+                        <a href="#" >Scientists<span></span></a>
+                    </div>
+                </div>
+            </div>
+            <div id="discussion" class="mainContainerWrapper">
+                <span class="sectionIntro">Contribute to a people's plan</span>
+                <h2 class="sectionTitle">Join the discussion</h2>
+                <div id="discussionContainer">
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
    <script type="text/javascript" src="scripts/index.js"></script>
 </body>
