@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Solvery: Startseite</title>
+    <title>Solvery: Home</title>
+    <link rel="shortcut icon" href="#"/>
     <link rel="stylesheet" href="styles/style.css" type="text/css" />
 </head>
 <body>
@@ -12,11 +13,11 @@
     <nav id="nav">
         <span id="navLinks" class="navLinksTop">
             <!--Links to be reached via the top navigation menu-->
-            <span><a href="#">Home</a></span>
+            <span><a href="#" class="active">Home</a></span>
             <span><a href="#">About</a></span>
         </span> 
         <!--container for menu switch; only visible if screen is too small--> 
-        <button id="navMenuButton" class="navVisibilitySwitch">
+        <button id="navMenuButton">
             <span class="iconBar"></span>
             <span class="iconBar"></span>
             <span class="iconBar"></span>
@@ -26,26 +27,27 @@
         <span class="textWithHorizontalLine"> <span>Which topic are you here for?</span> </span>
         <form type="text" id="topicSearch"> 
             <input placeholder="Search">
-            <button></button>
+            <button type="submit"></button>
         </form>
+        <div id="searchTermContainer"></div>
         <div id="mainContainer">
             <div id="contacts" class="mainContainerWrapper">
                 <span class="sectionIntro">Talent Pool</span>
-                <h2 class="sectionTitle">Get into contact</h2>
+                <h2 class="sectionTitle">Get into Contact</h2>
                 <div id="contactContainer">
-                    <div class="contact" id="activists">
+                    <div class="linkPanel" id="activists">
                         <svg viewBox="0 0 25 25"><use xlink:href="images/activists.svg#symbol"></use></svg>
                         <a href="#" >Activists<span></span></a>
                     </div>
-                    <div class="contact" id="journalists">
+                    <div class="linkPanel" id="journalists">
                         <svg viewBox="0 0 25 25"><use xlink:href="images/journalists.svg#symbol"></use></svg>
                         <a href="#" >Journalists<span></span></a>
                     </div>
-                    <div class="contact" id="policyMakers">
+                    <div class="linkPanel" id="policyMakers">
                         <svg viewBox="0 0 25 25"><use xlink:href="images/policyMakers.svg#symbol"></use></svg>
                         <a href="#" >Policy makers<span></span></a>
                     </div>
-                    <div class="contact" id="scientists">
+                    <div class="linkPanel" id="scientists">
                         <svg viewBox="0 0 25 25"><use xlink:href="images/scientists.svg#symbol"></use></svg>
                         <a href="#" >Scientists<span></span></a>
                     </div>
@@ -55,13 +57,17 @@
                 <span class="sectionIntro">Contribute to a people's plan</span>
                 <h2 class="sectionTitle">Join the discussion</h2>
                 <div id="discussionContainer">
-
+                    <div class="linkPanel" id="discuss">
+                        <svg viewBox="0 0 25 25"><use xlink:href="images/discuss.svg#symbol"></use></svg>
+                        <a href="pages/discuss.html" >Discuss!<span></span></a>
+                    </div>
                 </div>
             </div>
             
         </div>
     </div>
 
-   <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/nav.js"></script>
+    <script type="text/javascript" src="scripts/search.js"></script>
 </body>
 </html>
