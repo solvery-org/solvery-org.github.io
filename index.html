@@ -10,7 +10,7 @@
 </head>
 <body>
     <!--Navigation bar at screen top-->
-    <nav id="nav">
+    <nav id="nav" role="navigation">
         <span id="navLinks" class="navLinksTop">
             <!--Links to be reached via the top navigation menu-->
             <span><a href="#" class="active">Home</a></span>
@@ -23,6 +23,13 @@
             <span class="iconBar"></span>
         </button>
     </nav> 
+    <section id="titleImageContainer" role="banner">
+        <div id="titleOverlayColor"></div>
+        <div id="titleOverlayText">
+            <h2>Solvery</h2>
+            <span>Improving communication between politics, activists, journalists, scientists, and the general public</span>
+        </div>
+    </section>
     <div id="main">
         <span class="textWithHorizontalLine"> <span>Which topic are you here for?</span> </span>
         <form type="text" id="topicSearch"> 
@@ -31,7 +38,7 @@
         </form>
         <div id="searchTermContainer"></div>
         <div id="mainContainer">
-            <div id="contacts" class="mainContainerWrapper">
+            <div class="mainContainerWrapper">
                 <span class="sectionIntro">Talent Pool</span>
                 <h2 class="sectionTitle">Get into Contact</h2>
                 <div id="contactContainer">
@@ -69,5 +76,6 @@
 
     <script type="text/javascript" src="scripts/nav.js"></script>
     <script type="text/javascript" src="scripts/search.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>

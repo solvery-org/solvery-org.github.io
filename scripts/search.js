@@ -1,7 +1,7 @@
 var searchTermList = sessionStorage.getItem("searchTermList");
 searchTermList = searchTermList ? JSON.parse(searchTermList) : {};
 
-function addSearchTermToDOMOnInput(event) {
+function addSearchTermOnInput(event) {
     var searchTerm = event.target[0].value;
     var index = addSearchTermToList(searchTerm);
     addSearchTermToDOM(searchTerm, index);
@@ -21,6 +21,9 @@ function addSearchTermToDOM(searchTerm, index) {
     removeButton.title = "Remove Term";
     removeButton.addEventListener("click", removeSearchTermFromList);
     removeButton.addEventListener("click", removeSearchTermFromDOM);
+    try {
+        removeButton.addEventListener("click", updateDiscussion)
+    }  catch (e) {}
     searchTermBox.appendChild(removeButton);
     var container = document.getElementById("searchTermContainer");
     container.appendChild(searchTermBox);
@@ -51,7 +54,10 @@ function removeSearchTermFromList(event) {
 
 function addSearchFormListener() {
     var searchForm = document.getElementById("topicSearch");
-    searchForm.addEventListener("submit", addSearchTermToDOMOnInput);
+    searchForm.addEventListener("submit", addSearchTermOnInput);
+    try {
+        searchForm.addEventListener("submit", updateDiscussion);
+    }  catch (e) {}
 }
 
 function reloadSearchTermListToDom() {

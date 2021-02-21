@@ -5,18 +5,65 @@ body {
     margin:0;
     padding:0;
     background-color:#f4f4f4;
-    background-attachment: fixed;
+    /*background-attachment: fixed; no effect*/
     display: block;
 }
 
+/* #region title image*/
+
+#titleImageContainer {
+    background-image: url(../images/titleImageHome.jpg);
+    padding-top: 220px;
+    padding-bottom: 120px;
+    margin-bottom: 30px;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+
+#titleOverlayColor {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#titleOverlayText {
+    position: relative;
+    color: white;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#titleOverlayText h2 {
+    font-size: 20px;
+    line-height: 30px;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+
+#titleOverlayText span {
+    text-transform: capitalize;
+}
+
+/* #endregion title image*/
+
 /* #region top navigation bar*/
 #nav {
+    position: sticky;
+    top: 0;
     align-items: center; /*align vertically*/
+    background-color: inherit;
     box-shadow: 1px 1px 5px black;
     display: flex;
-    height: 6vh;
     justify-content: right;
     overflow: hidden;
+    z-index: 1;
+    height: 60px;
 }
 
 #nav a {
@@ -25,8 +72,8 @@ body {
     text-decoration: none;
     padding-right: 1.5vw;
     padding-left: 1.5vw;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    /*padding-top: 2vh;
+    padding-bottom: 2vh; no effect*/
 }
 
 #nav a:hover{
@@ -122,7 +169,7 @@ body {
 }
 
 #searchTermContainer {
-    height: 10vh;
+    height: 50px;
     display: block;
 }
 
@@ -166,6 +213,8 @@ body {
     display: grid;
     grid-template-columns: 50% 50%;
 }
+
+/* #region linkPanel */
 
 .linkPanel {
     position: relative;
@@ -211,9 +260,65 @@ body {
     border-right: 0.5px solid #ddd;
 }
 
+/* #endregion linkPanel*/
+
 #discussionContainer {
     flex: 1;
 }
+
+#mainContainer.discuss {
+    display: block;
+}
+
+/* #region topicOverview*/
+#statementOverview {
+    display: block;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 160px;
+    overflow-y: auto;
+    border-top: 0.5px solid #ddd;
+    border-bottom: 0.5px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.statement {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    width: 100%;
+    background-color: #ddd;
+    color: black;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.statement:hover {
+    background-color:#00bbff;
+    color: #fff;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+/* #endregion topicOverview*/
+
+/* #region discussionTree*/
+
+#contributionTree {
+    min-height: fit-content;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-y: auto;
+    border-bottom: 0.5px solid #ddd;
+}
+
+/* #endregion discussionTree*/
 
 /* #region adjustments for different media */
 @media only screen and (max-height:700px) {
