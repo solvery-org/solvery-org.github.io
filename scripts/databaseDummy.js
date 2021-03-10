@@ -1,5 +1,5 @@
-var databaseDummy = [
-    {
+var databaseDummy = {
+    1 : {
         id : 1,
         tags : ["climate", "co2", "fuel"],
         parent : null,
@@ -10,7 +10,7 @@ var databaseDummy = [
         upvote: 10,
         downvote : 5,
     },
-    {
+    2 : {
         id : 2,
         tags : ["climate", "co2", "fuel"],
         parent : 1,
@@ -21,7 +21,7 @@ var databaseDummy = [
         upvote: 5,
         downvote : 1
     },
-    {
+    3 : {
         id : 3,
         tags : ["climate", "co2", "fuel"],
         parent : 1,
@@ -32,7 +32,7 @@ var databaseDummy = [
         upvote: 2,
         downvote : 3
     },
-    {
+    4 : {
         id : 4,
         tags : ["social"],
         parent : null,
@@ -43,7 +43,7 @@ var databaseDummy = [
         upvote: 7,
         downvote : 6,
     },
-    {
+    5 : {
         id : 5,
         tags : ["social"],
         parent : 1,
@@ -54,7 +54,7 @@ var databaseDummy = [
         upvote: 5,
         downvote : 4
     },
-    {
+    6 : {
         id : 6,
         tags : ["social"],
         parent : 1,
@@ -64,5 +64,38 @@ var databaseDummy = [
         source : "anotherrandomlink.com",
         upvote: 5,
         downvote : 7
+    },
+    7 : {
+        id : 7,
+        tags : ["social"],
+        parent : null,
+        children : [8],
+        type : "statement",
+        content : "Gloves should be called hand shoes.",
+        source : null,
+        upvote: 7,
+        downvote : 6,
+    },
+    8 : {
+        id : 8,
+        tags : ["social"],
+        parent : 1,
+        children : [9],
+        type : true,
+        content : "This will be more intuitive.",
+        source : "randomlink.com",
+        upvote: 5,
+        downvote : 4
+    },
+    9 : {
+        id : 9,
+        tags : ["social"],
+        parent : 1,
+        children : null,
+        type : false,
+        content : "This is not generally true.",
+        source : "anotherrandomlink.com",
+        upvote: 5,
+        downvote : 7
     }
-]
+}

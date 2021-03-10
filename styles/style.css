@@ -13,8 +13,8 @@ body {
 
 #titleImageContainer {
     background-image: url(../images/titleImageHome.jpg);
-    padding-top: 220px;
-    padding-bottom: 120px;
+    padding-top: 20vh;
+    padding-bottom: 12vh;
     margin-bottom: 30px;
     background-position: center center;
     background-size: cover;
@@ -220,7 +220,7 @@ body {
     position: relative;
     display: block;
     box-sizing: border-box;
-    height: 18vh;
+    height: max(18vh,100px);
     fill: #03a9f4;
 }
 
@@ -268,6 +268,24 @@ body {
 
 #mainContainer.discuss {
     display: block;
+}
+
+.discussionTreeElement {
+    width: fit-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.discussionTreeHead {
+    background-color: grey;
+}
+
+.pro {
+    background-color: green;
+}
+
+.con {
+    background-color: red;
 }
 
 /* #region topicOverview*/
