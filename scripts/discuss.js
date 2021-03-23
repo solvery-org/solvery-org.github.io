@@ -1,4 +1,4 @@
-//list of all contributions matching current tags
+//list of all contributions matching current search tags
 var contributionShortList = {}; 
 
 //family of contributions belonging to statement selected in statementOverview for display in contributionTree
@@ -25,6 +25,10 @@ function addStatementToOverview(contribution) {
 }
 
 function updateSelectedTree(contribution) {
+    // updates the selectedTree-Object containing all contributions
+    // of the current argument tree
+    //
+    // WILL BE MOVED TO BACKEND!
     selectedTree[contribution.id] = contribution;
     if (!contribution.children) {
         return;
@@ -37,22 +41,54 @@ function updateSelectedTree(contribution) {
 }
 
 function updateTreeDOM(contribution, parentNode) {
-    var contributionTreeBox = document.createElement("div");
-    parentNode.appendChild(contributionTreeBox);
-    contributionTreeBox.textContent = contribution.content;
-    contributionTreeBox.classList.add("discussionTreeElement");
+    //Creates the contribution tree
+
+    //treeContainer: container for the element placeholder and branches
+    var treeContainer = document.createElement("div");
+    treeContainer.classList.add("treeContainer");
+    parentNode.appendChild(treeContainer);
+    //treeElement: element placeholder
+    var treeElement = document.createElement("div"); 
+    treeContainer.appendChild(treeElement);
+    treeElement.title = contribution.content;
+    treeElement.classList.add("treeElement");
+    //verticalBranch: vertical branch sign
+    var verticalBranch = document.createElement("div");
+    verticalBranch.classList.add("verticalBranch");
     if (contribution.type == "statement") {
-        contributionTreeBox.classList.add("discussionTreeHead");
+        treeElement.classList.add("treeHead");
+        treeContainer.appendChild(verticalBranch);
     } else {
+        treeContainer.insertBefore(verticalBranch, treeElement);
         var contributionType = contribution.type ? "pro" : "con";
-        contributionTreeBox.classList.add(contributionType);
+        treeElement.classList.add(contributionType);
     }
+
     if (!contribution.children) {
+        treeElement.classList.add("noChild");
         return;
     } else {
+        //contributionTreeBranch: container for all child elements
+        treeContainer.appendChild(verticalBranch.cloneNode());
+        var treeBranchBox = document.createElement("div"); 
+        treeContainer.appendChild(treeBranchBox);
+        treeBranchBox.classList.add("treeBranchBox");
+        var treeProBox = document.createElement("div");
+        treeBranchBox.appendChild(treeProBox);
+        var treeConBox = document.createElement("div"); 
+        treeBranchBox.appendChild(treeConBox);
+        var newParentNode;
+        var childContribution;
         for (var childId of contribution.children) {
-            //replace parentNode by contributionTreeBox
-            updateTreeDOM(contributionShortList[childId], parentNode);
+            childContribution = contributionShortList[childId];
+            if (childContribution.type) {
+                treeProBox.classList.add("treeArgBox"); 
+                newParentNode = treeProBox;
+            } else {
+                treeConBox.classList.add("treeArgBox");
+                newParentNode = treeConBox;
+            }
+            updateTreeDOM(childContribution, newParentNode);
         }
     }
 }
@@ -62,6 +98,7 @@ function updateTreeOnStatementSelect(event) {
     var statement = contributionShortList[id];
     
     var contributionTree = document.getElementById("contributionTree");
+    contributionTree.classList.add("treeSelected");
     contributionTree.innerHTML = "";
     updateTreeDOM(statement, contributionTree);
     //selectedTree = {};

@@ -270,13 +270,40 @@ body {
     display: block;
 }
 
-.discussionTreeElement {
-    width: fit-content;
-    padding-top: 5px;
-    padding-bottom: 5px;
+.treeContainer {
+    display: block;
 }
 
-.discussionTreeHead {
+.verticalBranch {
+    width: 1px;
+    height: 5px;
+    margin: 0 auto;
+    display: block;
+    border-left: 0.5px solid #aaa; 
+}
+
+.treeElement {
+    display: block;
+    margin: 0 auto;
+    width: max(5vw,30px);
+    height: max(5vh,20px);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.treeBranchBox {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1px;
+}
+
+.treeArgBox {
+    border-top: 0.5px solid #aaa; 
+}
+
+.treeHead {
     background-color: grey;
 }
 
@@ -332,7 +359,14 @@ body {
     width: 100%;
     padding-left: 5px;
     padding-right: 5px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
     overflow-y: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#contributionTree.treeSelected {
     border-bottom: 0.5px solid #ddd;
 }
 
