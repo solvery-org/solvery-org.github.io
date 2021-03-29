@@ -96,6 +96,13 @@ body {
     padding-right: 5vw;
 }
 
+.sectionWrapper {
+    margin: auto;
+    width: 750px;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
 .sectionIntro {
     font-size: 24px;
     color: #03a9f4;
@@ -107,6 +114,13 @@ body {
     text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 30px;
+}
+
+.sectionText {
+    font-size: 14px;
+    text-align: justify;
+    color: #999;
+    line-height: 29px;
 }
 
 /* #region text with horizontal line */
@@ -274,6 +288,24 @@ body {
     display: block;
 }
 
+/* #region discussionTree*/
+
+#contributionTree {
+    min-height: fit-content;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#contributionTree.aTreeWasSelected {
+    border-bottom: 0.5px solid #ddd;
+}
+
 .verticalBranch {
     width: 1px;
     height: 5px;
@@ -315,6 +347,9 @@ body {
     background-color: red;
 }
 
+
+/* #endregion discussionTree*/
+
 /* #region topicOverview*/
 #statementOverview {
     display: block;
@@ -351,26 +386,6 @@ body {
 }
 
 /* #endregion topicOverview*/
-
-/* #region discussionTree*/
-
-#contributionTree {
-    min-height: fit-content;
-    width: 100%;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    overflow-y: auto;
-    display: flex;
-    justify-content: center;
-}
-
-#contributionTree.treeSelected {
-    border-bottom: 0.5px solid #ddd;
-}
-
-/* #endregion discussionTree*/
 
 /* #region adjustments for different media */
 @media only screen and (max-height:700px) {
@@ -439,6 +454,10 @@ body {
 
     #mainContainer {
         display: block;
+    }
+
+    .sectionWrapper {
+        width: 90vw;
     }
 
     #contactContainer {

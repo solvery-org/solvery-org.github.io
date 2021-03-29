@@ -52,7 +52,7 @@ function updateTreeDOM(contribution, parentNode) {
     treeContainer.appendChild(treeElement);
     treeElement.title = contribution.content;
     treeElement.classList.add("treeElement");
-    //verticalBranch: vertical branch sign
+    //verticalBranch: vertical branch  (no content)
     var verticalBranch = document.createElement("div");
     verticalBranch.classList.add("verticalBranch");
     if (contribution.type == "statement") {
@@ -68,7 +68,9 @@ function updateTreeDOM(contribution, parentNode) {
         treeElement.classList.add("noChild");
         return;
     } else {
-        //contributionTreeBranch: container for all child elements
+        //treeBranchBox: container for all child elements
+        //subdivided into container for pro-arguments and con-arguments
+        //both (pro-and con-box) are added as placeholders
         treeContainer.appendChild(verticalBranch.cloneNode());
         var treeBranchBox = document.createElement("div"); 
         treeContainer.appendChild(treeBranchBox);
@@ -98,7 +100,20 @@ function updateTreeOnStatementSelect(event) {
     var statement = contributionShortList[id];
     
     var contributionTree = document.getElementById("contributionTree");
-    contributionTree.classList.add("treeSelected");
+    contributionTree.classList.add("aTreeWasSelected");
+    contributionTree.innerHTML = "";
+    updateTreeDOM(statement, contributionTree);
+    //selectedTree = {};
+    //updateSelectedTree(statement);
+    //console.log(selectedTree);
+}
+
+function updateContributionOnTreeContributionSelect(event) {
+    var id = event.target.no;
+    var statement = contributionShortList[id];
+    
+    var contributionTree = document.getElementById("contributionTree");
+    contributionTree.classList.add("aTreeWasSelected");
     contributionTree.innerHTML = "";
     updateTreeDOM(statement, contributionTree);
     //selectedTree = {};
