@@ -104,7 +104,7 @@ var databaseDummy = {
         parent : 8,
         children : null,
         type : false,
-        content : "The necessary step is the government of the respective country.",
+        content : "The necessary step is to be done by the government of the respective country.",
         source : "anotherrandomlink.com",
         upvote: 5,
         downvote : 7

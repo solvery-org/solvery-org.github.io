@@ -4,9 +4,25 @@ body {
     font-family: "Raleway", sans-serif;
     margin:0;
     padding:0;
-    background-color:#f4f4f4;
+    background-color:var(--background-light);
     /*background-attachment: fixed; no effect*/
     display: block;
+}
+
+:root {
+    --background-light: #f4f4f4;
+    --box-shadow: 1px 1px 5px black;
+    --border-light: 0.5px solid #ddd;
+    --border-dark: 0.5px solid #aaa;
+
+    --hover-transition: all 0.5s ease-in-out;
+
+    --color-active: #03a9f4;
+    --color-hover: #00bbff;
+
+    --color-pro: 130,210,130;
+    --color-con: 210,130,130;
+    --color-head: 130,130,130;
 }
 
 /* #region title image*/
@@ -58,7 +74,7 @@ body {
     top: 0;
     align-items: center; /*align vertically*/
     background-color: inherit;
-    box-shadow: 1px 1px 5px black;
+    box-shadow: var(--box-shadow);
     display: flex;
     justify-content: right;
     overflow: hidden;
@@ -85,7 +101,7 @@ body {
 }
 
 #nav .active {
-    color: #03a9f4;
+    color: var(--color-active);
 }
 
 /* #endregion top navigation bar*/
@@ -105,7 +121,7 @@ body {
 
 .sectionIntro {
     font-size: 24px;
-    color: #03a9f4;
+    color: var(--color-active);
 }
 
 .sectionTitle {
@@ -239,10 +255,10 @@ body {
 }
 
 .linkPanel:hover {
-    background-color:#00bbff;
+    background-color:var(--color-hover);
     color: #fff;
     fill: #fff;
-    transition: all 0.5s ease-in-out;
+    transition: var(--hover-transition);
 }
 
 .linkPanel svg {
@@ -271,7 +287,7 @@ body {
 }
 
 #contactContainer .linkPanel:nth-child(2n+1) {
-    border-right: 0.5px solid #ddd;
+    border-right: var(--border-light);
 }
 
 /* #endregion linkPanel*/
@@ -300,10 +316,13 @@ body {
     overflow-y: auto;
     display: flex;
     justify-content: center;
+
+    --treeElWidth: max(5vw,30px);
+    --treeElHeight: max(5vh,20px);
 }
 
 #contributionTree.aTreeWasSelected {
-    border-bottom: 0.5px solid #ddd;
+    border-bottom: var(--border-light);
 }
 
 .verticalBranch {
@@ -311,18 +330,38 @@ body {
     height: 5px;
     margin: 0 auto;
     display: block;
-    border-left: 0.5px solid #aaa; 
+    border-left: var(--border-dark); 
 }
 
 .treeElement {
     display: block;
     margin: 0 auto;
-    width: max(5vw,30px);
-    height: max(5vh,20px);
+    width: var(--treeElWidth);
+    height: var(--treeElHeight);
     padding-top: 5px;
     padding-bottom: 5px;
     cursor: pointer;
+    position: relative;
 }
+
+
+.treeElement span[role=tooltip] {
+    display: none;
+}
+
+.treeElement:hover span[role=tooltip] {
+    display: block;  
+    position: absolute; 
+    text-align: center;
+    top: var(--treeElHeight);
+    left: calc(var(--treeElWidth)/2);
+    width: calc(var(--treeElWidth)*5);
+    padding: 5px;
+    z-index: 100;
+    color: #000; 
+    box-shadow: var(--box-shadow);
+    border-radius: 3px;
+  }
 
 .treeBranchBox {
     margin: 0 auto;
@@ -332,21 +371,32 @@ body {
 }
 
 .treeArgBox {
-    border-top: 0.5px solid #aaa; 
+    border-top: var(--border-dark); 
 }
 
 .treeHead {
-    background-color: grey;
+    background-color: rgb(var(--color-head));
+}
+
+.treeHead:hover span[role=tooltip] {
+    background-color: rgba(var(--color-head), 0.6);
 }
 
 .pro {
-    background-color: green;
+    background-color: rgb(var(--color-pro));
+}
+
+.pro:hover span[role=tooltip] {
+    background-color: rgba(var(--color-pro), 0.6);
 }
 
 .con {
-    background-color: red;
+    background-color: rgb(var(--color-con));
 }
 
+.con:hover span[role=tooltip] {
+    background-color: rgba(var(--color-con), 0.6);
+}
 
 /* #endregion discussionTree*/
 
@@ -358,8 +408,8 @@ body {
     padding-right: 5px;
     height: 160px;
     overflow-y: auto;
-    border-top: 0.5px solid #ddd;
-    border-bottom: 0.5px solid #ddd;
+    border-top: var(--border-light);
+    border-bottom: var(--border-light);
     margin-bottom: 20px;
 }
 
@@ -379,9 +429,9 @@ body {
 }
 
 .statement:hover {
-    background-color:#00bbff;
+    background-color:var(--color-hover);
     color: #fff;
-    transition: all 0.5s ease-in-out;
+    transition: var(--hover-transition);
     cursor: pointer;
 }
 
@@ -412,7 +462,7 @@ body {
         margin-left: -5vw;
         margin-bottom: 10px;
         margin-right: 5vw;
-        border-top: 0.5px solid #ddd;
+        border-top: var(--border-light);
     }
 
     #navLinks a {
@@ -430,18 +480,18 @@ body {
         position: absolute;
         right: 10px;
         top: 10px;
-        background-color: #f4f4f4;
-        border: 1px solid #ddd;
+        background-color: var(--background-light);
+        border: var(--border-light);
         display: block;
         padding-top: 12px;
         padding-bottom: 12px;
-        transition: all .3s ease-in-out;
+        transition: var(--hover-transition);
     }
     
     #navMenuButton:hover {
-        background-color:#00bbff;
+        background-color:var(--color-hover);
         color:#000;
-        transition: all .3s ease-in-out;
+        transition: var(--hover-transition);
     }
     
     #navMenuButton .iconBar {

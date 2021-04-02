@@ -50,9 +50,13 @@ function updateTreeDOM(contribution, parentNode) {
     //treeElement: element placeholder
     var treeElement = document.createElement("div"); 
     treeContainer.appendChild(treeElement);
-    treeElement.title = contribution.content;
     treeElement.classList.add("treeElement");
-    //verticalBranch: vertical branch  (no content)
+    //treeElTooltip: displays on hovering over the treeElement
+    var treeElTooltip = document.createElement("span"); 
+    treeElTooltip.setAttribute("role", "tooltip");
+    treeElTooltip.textContent = contribution.content;
+    treeElement.appendChild(treeElTooltip);
+    //verticalBranch: vertical line (no content)
     var verticalBranch = document.createElement("div");
     verticalBranch.classList.add("verticalBranch");
     if (contribution.type == "statement") {
@@ -65,7 +69,6 @@ function updateTreeDOM(contribution, parentNode) {
     }
 
     if (!contribution.children) {
-        treeElement.classList.add("noChild");
         return;
     } else {
         //treeBranchBox: container for all child elements
