@@ -69,22 +69,18 @@ body {
 /* #endregion title image*/
 
 /* #region top navigation bar*/
-#nav {
+.nav {
     position: sticky;
-    top: 0;
     align-items: center; /*align vertically*/
     background-color: inherit;
     box-shadow: var(--box-shadow);
     display: flex;
-    justify-content: right;
     overflow: hidden;
     z-index: 1;
-    height: 60px;
 }
 
-#nav a {
+.nav a {
     color: black;
-    font-size: 18px;
     text-decoration: none;
     padding-right: 1.5vw;
     padding-left: 1.5vw;
@@ -92,16 +88,39 @@ body {
     padding-bottom: 2vh; no effect*/
 }
 
-#nav a:hover{
+.nav a:hover{
     color:#00bbff;
+}
+
+.nav .active {
+    color: var(--color-active);
+}
+
+#navTop {
+    justify-content: right;
+    top: 0;
+
+    --navTopHeight : max(6vh,60px);
+    height: var(--navTopHeight);
+}
+
+#navTop a {
+    font-size: 18px;
 }
 
 #navMenuButton {
     display: none;
 }
 
-#nav .active {
-    color: var(--color-active);
+#navBot {
+    justify-content: space-between;
+    bottom: 0;
+
+    height: max(3vh, 30px);
+}
+
+#changeDate {
+    padding-left: 1.5vw;
 }
 
 /* #endregion top navigation bar*/
@@ -439,23 +458,22 @@ body {
 
 /* #region adjustments for different media */
 @media only screen and (max-height:700px) {
-    #nav a {
+    #navTop a {
         font-size: 16px;
     }
 }
 
 @media only screen and (max-width:800px) {
-    #nav {
+    #navTop {
         display: block;
-        min-height: 60px;
         transition: height 0.5s;
     }
     
-    .navLinksTop a {
+    .navTopLinksAbove a {
         display: none;
     }
 
-    #navLinks a::before {
+    #navTopLinks a::before {
         display: block;
         content: "";
         width: 90vw;
@@ -465,11 +483,11 @@ body {
         border-top: var(--border-light);
     }
 
-    #navLinks a {
+    #navTopLinks a {
         padding: 0;
     }
 
-    .navLinksBelow {
+    .navTopLinksBelow {
         margin-left: 10%;
         display: grid;
         gap: 12px;
