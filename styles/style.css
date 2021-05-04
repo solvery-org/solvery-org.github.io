@@ -29,8 +29,7 @@ body {
 
 #titleImageContainer {
     background-image: url(../images/titleImageHome.jpg);
-    padding-top: 20vh;
-    padding-bottom: 12vh;
+    height: 32vh;
     margin-bottom: 30px;
     background-position: center center;
     background-size: cover;
@@ -53,6 +52,7 @@ body {
     text-align: center;
     margin-right: auto;
     margin-left: auto;
+    padding-top: 16vh;
 }
 
 #titleOverlayText h2 {
@@ -84,12 +84,10 @@ body {
     text-decoration: none;
     padding-right: 1.5vw;
     padding-left: 1.5vw;
-    /*padding-top: 2vh;
-    padding-bottom: 2vh; no effect*/
 }
 
 .nav a:hover{
-    color:#00bbff;
+    color:var(--color-hover);
 }
 
 .nav .active {
@@ -113,7 +111,9 @@ body {
 }
 
 #navBot {
+    position: fixed;
     justify-content: space-between;
+    width: 100vw;
     bottom: 0;
 
     height: max(3vh, 30px);
