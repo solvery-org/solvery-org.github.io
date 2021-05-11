@@ -11,8 +11,9 @@ body {
 
 :root {
     --background-light: #f4f4f4;
+    --background-medium: #ddd;
     --box-shadow: 1px 1px 5px black;
-    --border-light: 0.5px solid #ddd;
+    --border-light: 0.5px solid var(--background-medium);
     --border-dark: 0.5px solid #aaa;
 
     --hover-transition: all 0.5s ease-in-out;
@@ -23,6 +24,10 @@ body {
     --color-pro: 130,210,130;
     --color-con: 210,130,130;
     --color-head: 130,130,130;
+}
+
+.hidden {
+    display: none;
 }
 
 /* #region title image*/
@@ -70,7 +75,6 @@ body {
 
 /* #region top navigation bar*/
 .nav {
-    position: sticky;
     align-items: center; /*align vertically*/
     background-color: inherit;
     box-shadow: var(--box-shadow);
@@ -95,6 +99,7 @@ body {
 }
 
 #navTop {
+    position: sticky;
     justify-content: right;
     top: 0;
 
@@ -111,10 +116,8 @@ body {
 }
 
 #navBot {
-    position: fixed;
     justify-content: space-between;
-    width: 100vw;
-    bottom: 0;
+    width: 100%;
 
     height: max(3vh, 30px);
 }
@@ -129,6 +132,7 @@ body {
     padding-top: 16px;
     padding-left: 5vw;
     padding-right: 5vw;
+    min-height: 60vh;
 }
 
 .sectionWrapper {
@@ -331,13 +335,12 @@ body {
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 15px;
-    margin-bottom: 15px;
     overflow-y: auto;
     display: flex;
     justify-content: center;
 
-    --treeElWidth: max(5vw,30px);
-    --treeElHeight: max(5vh,20px);
+    --treeElWidth: max(3vw,30px);
+    --treeElHeight: max(4vh,30px);
 }
 
 #contributionTree.aTreeWasSelected {
@@ -361,6 +364,7 @@ body {
     padding-bottom: 5px;
     cursor: pointer;
     position: relative;
+    border-radius: 10px;
 }
 
 
@@ -374,7 +378,7 @@ body {
     text-align: center;
     top: var(--treeElHeight);
     left: calc(var(--treeElWidth)/2);
-    width: calc(var(--treeElWidth)*5);
+    width: calc(var(--treeElWidth)*6);
     padding: 5px;
     z-index: 100;
     color: #000; 
@@ -441,7 +445,7 @@ body {
     margin-bottom: 5px;
     padding-left: 5px;
     width: 100%;
-    background-color: #ddd;
+    background-color: var(--background-medium);
     color: black;
     font-size: 16px;
     vertical-align: middle;
@@ -455,6 +459,81 @@ body {
 }
 
 /* #endregion topicOverview*/
+
+/* #region contributionDetail */
+
+#contributionDetail {
+    margin-bottom: 15px;
+    align-items: center;
+    --voteButtonSize : 30px;
+}
+
+#contributionDetail:not(.hidden) {
+    display: flex;
+}
+
+#contributionDetail .voteButton {
+    width: 0;
+    height: 0;
+    background-color: inherit;
+    border: 0;
+    border-left: var(--voteButtonSize) solid transparent;
+    border-right: var(--voteButtonSize) solid transparent;
+    cursor: pointer;
+}
+
+#contributionDetail .upvote {
+    border-bottom: var(--voteButtonSize) solid var(--background-medium);
+}
+
+#contributionDetail .upvote:hover {
+    border-bottom: var(--voteButtonSize) solid var(--color-hover);
+    transition: var(--hover-transition);
+}
+
+#contributionDetail .downvote {
+    border-top: var(--voteButtonSize) solid var(--background-medium);
+}
+
+#contributionDetail .downvote:hover {
+    border-top: var(--voteButtonSize) solid var(--color-hover);
+    transition: var(--hover-transition);
+}
+
+#contributionDetail .voteCountDisplay {
+    height: 30px;
+    width: calc(var(--voteButtonSize)*2);
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#contributionDetail .vote {
+    margin-top: 5px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+#contributionDetail .contributionTextDisplay {
+    line-height: 30px;
+}
+
+.voteCountDisplay {
+    text-align: center;
+}
+
+.voteCountDisplay.negative {
+    color: rgb(var(--color-con));
+}
+
+.voteCountDisplay.positive {
+    color: rgb(var(--color-pro));
+}
+
+.sourceLink {
+    text-decoration: none;
+}
+
+/* #endregion contributionDetail */
 
 /* #region adjustments for different media */
 @media only screen and (max-height:700px) {

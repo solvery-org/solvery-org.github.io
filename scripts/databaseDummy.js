@@ -7,7 +7,7 @@ var databaseDummy = {
         children : [2, 3],
         type : "statement",
         content : "Diesel subsidies should be cancelled completely.",
-        source : null,
+        sources : null,
         upvote: 10,
         downvote : 5,
         archived: false,
@@ -21,7 +21,7 @@ var databaseDummy = {
         children : null,
         type : true,
         content : "It is the subsidy which is the most harmful.",
-        source : "randomlink.com",
+        sources : ["wikipedia.org"],
         upvote: 5,
         downvote : 1
     },
@@ -33,7 +33,7 @@ var databaseDummy = {
         children : null,
         type : false,
         content : "There is no alternative for transport companies yet.",
-        source : "anotherrandomlink.com",
+        sources : ["bundestag.de"],
         upvote: 2,
         downvote : 3
     },
@@ -45,7 +45,7 @@ var databaseDummy = {
         children : [5],
         type : "statement",
         content : "Inheritance tax should be increased.",
-        source : null,
+        sources : null,
         upvote: 7,
         downvote : 6,
     },
@@ -57,7 +57,7 @@ var databaseDummy = {
         children : [6],
         type : true,
         content : "This will reduce wealth inequality.",
-        source : "randomlink.com",
+        sources : ["wikipedia.org"],
         upvote: 5,
         downvote : 4
     },
@@ -69,7 +69,7 @@ var databaseDummy = {
         children : null,
         type : false,
         content : "Wealth inequality will not be affected by this.",
-        source : "anotherrandomlink.com",
+        sources : ["bundestag.de"],
         upvote: 5,
         downvote : 7
     },
@@ -81,7 +81,7 @@ var databaseDummy = {
         children : [8],
         type : "statement",
         content : "Companies should have to guarantee for fair production conditions.",
-        source : null,
+        sources : null,
         upvote: 7,
         downvote : 6,
     },
@@ -93,7 +93,7 @@ var databaseDummy = {
         children : [9,10],
         type : true,
         content : "This will lead to an improvement on living conditions in producing countries.",
-        source : "randomlink.com",
+        sources : ["wikipedia.org"],
         upvote: 5,
         downvote : 4
     },
@@ -105,7 +105,7 @@ var databaseDummy = {
         children : null,
         type : false,
         content : "The necessary step is to be done by the government of the respective country.",
-        source : "anotherrandomlink.com",
+        sources : ["wikipedia.org", "bundestag.de"],
         upvote: 5,
         downvote : 7
     },
@@ -117,7 +117,7 @@ var databaseDummy = {
         children : null,
         type : true,
         content : "This has been observed for several countries.",
-        source : "anotherrandomlink.com",
+        sources : ["bundestag.de"],
         upvote: 12,
         downvote : 0
     }
