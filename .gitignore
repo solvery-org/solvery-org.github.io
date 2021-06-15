@@ -1,6 +1,9 @@
 Skip to content
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# server testing folder
+mockServer
+
 # compiled output
 /dist
 /tmp

@@ -1,5 +1,6 @@
 //list of all contributions matching current search tags
 var contributionShortList = {}; 
+var serverOffline = false;
 
 function addStatementToOverview(contribution) {
     if (contribution.type == "statement") {
@@ -142,6 +143,7 @@ function updateContributionOnTreeContributionSelect(event) {
 }
 
 function findAllContributionsMatchingSingleTag(tag, contributionList) {
+    // only used in case of the server not being able to serve contribution list
     var result = {};
     var contribution;
     for (var id in contributionList) {
@@ -154,7 +156,8 @@ function findAllContributionsMatchingSingleTag(tag, contributionList) {
 }
 
 function findAllContributionsMatchingAllTags() {
-    //returns object of all contributions matching all specified tags
+    // returns object of all contributions matching all specified tags
+    // only used in case of the server not being able to serve contribution list
     var result = databaseDummy; 
     var tag; 
     for (var tagIndex in searchTermList) {
@@ -164,8 +167,27 @@ function findAllContributionsMatchingAllTags() {
     return result;
 }
 
-function updateContributionShortList() {
-    contributionShortList = findAllContributionsMatchingAllTags();
+function updateDiscussion() {
+    if (serverOffline) {
+        updateDiscussionDOM(findAllContributionsMatchingAllTags());
+    } else {
+        fetchWithTimeout("http://txj09bh9vwcmw19w.myfritz.net:9876", {
+            method : "POST",
+            body : JSON.stringify(searchTermList)
+        }).then(response => {return response.json();
+            // response: contributionShortList based on searchTerms
+            }).catch (e => {
+            if (!isServerOffline(e)) {
+                console.warn(e.message);
+            }
+            var result = findAllContributionsMatchingAllTags();
+            return result;
+        }).then( list => {
+            contributionShortList = list;
+            updateDiscussionDOM(list);
+            return;
+        });
+    }
 }
 
 function clearDiscussionDOM() {
@@ -174,9 +196,9 @@ function clearDiscussionDOM() {
     //document.getElementById("contributionDetail").innerHTML = "";
 }
 
-function updateDiscussionDOM() {
+function updateDiscussionDOM(list) {
     clearDiscussionDOM();
-    var visibleNew = findAllContributionsMatchingAllTags();
+    var visibleNew = list;
     var contribution;
     for (var id in visibleNew) {
         contribution = visibleNew[id];
@@ -184,9 +206,24 @@ function updateDiscussionDOM() {
     }
 }
 
-function updateDiscussion() {
-    updateDiscussionDOM();
-    updateContributionShortList();
+async function fetchWithTimeout(resource, options) {
+    const { timeout = 2000 } = options;
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    const response = await fetch(resource, {
+      ...options,
+      signal: controller.signal  
+    });
+    clearTimeout(id);
+    return response;
+}
+
+function isServerOffline(e) {
+    if (e.name == "AbortError") {
+        window.alert("The server does not respond. You are now seeing exemplary data to grasp the concept!");
+        serverOffline = true;
+        return true;
+    } else return false;
 }
 
 /*
